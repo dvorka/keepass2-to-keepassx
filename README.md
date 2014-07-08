@@ -4,6 +4,8 @@ KeePass2 to KeePassX Convertor
 [KeePass2](http://keepass.info/) to [KeePassX](http://www.keepassx.org) password database 
 convertor.
 
+[![KeePass2 to KeePassX](http://3.bp.blogspot.com/-748wQFldpik/U7uCC-9ZAjI/AAAAAAAABhA/sPWYu_bIT2s/s400/keepass2-to-x.jpg "KeePass2 to KeePassX")](http://3.bp.blogspot.com/-748wQFldpik/U7uCC-9ZAjI/AAAAAAAABhA/sPWYu_bIT2s/s400/keepass2-to-x.jpg)
+
 Installation
 ------------
 
