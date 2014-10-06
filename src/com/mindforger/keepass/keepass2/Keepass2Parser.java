@@ -86,7 +86,9 @@ public class Keepass2Parser {
 				} while("Entry".equals(xpp.getName()));			
 			}			
 		} else {
-			database.groupStack.pop();
+			if(!database.groupStack.isEmpty()) {
+				database.groupStack.pop();				
+			}
 		}
 	}
 
