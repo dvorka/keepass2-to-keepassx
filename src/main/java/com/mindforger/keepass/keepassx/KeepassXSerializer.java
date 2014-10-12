@@ -37,6 +37,10 @@ public class KeepassXSerializer {
 		serializer.flush();
 	}
 	
+	private String nn(String s) {
+		return s!=null?s:"";
+	}
+	
 	private void groupToXml(KeepassDatabase database, KeepassDatabaseGroup group, XmlSerializer serializer) throws Exception {
 		serializer.startTag(null, "group");
 		
@@ -56,45 +60,47 @@ public class KeepassXSerializer {
 		}
 		List<KeepassDatabaseEntry> entries=database.getEntries(group);
 		for(KeepassDatabaseEntry entry:entries) {
-			serializer.startTag(null, "entry");
+			if(entry!=null) {
+				serializer.startTag(null, "entry");
 
-			serializer.startTag(null, "title");
-			serializer.text(entry.title);
-			serializer.endTag(null, "title");
+				serializer.startTag(null, "title");
+				serializer.text(nn(entry.title));
+				serializer.endTag(null, "title");
 
-			serializer.startTag(null, "username");
-			serializer.text(entry.username);
-			serializer.endTag(null, "username");
-			
-			serializer.startTag(null, "password");
-			serializer.text(entry.password);
-			serializer.endTag(null, "password");
-			
-			serializer.startTag(null, "url");
-			serializer.text(entry.url);
-			serializer.endTag(null, "url");
+				serializer.startTag(null, "username");
+				serializer.text(nn(entry.username));
+				serializer.endTag(null, "username");
+				
+				serializer.startTag(null, "password");
+				serializer.text(nn(entry.password));
+				serializer.endTag(null, "password");
+				
+				serializer.startTag(null, "url");
+				serializer.text(nn(entry.url));
+				serializer.endTag(null, "url");
 
-			serializer.startTag(null, "comment");
-			serializer.text(entry.notes);
-			serializer.endTag(null, "comment");
-			
-			serializer.startTag(null, "icon");
-			serializer.text("0");
-			serializer.endTag(null, "icon");
-			
-			serializer.startTag(null, "creation");
-			serializer.text("2014-06-30T09:20:17");
-			serializer.endTag(null, "creation");
-			
-			serializer.startTag(null, "lastaccess");
-			serializer.text("2014-06-30T09:20:23");
-			serializer.endTag(null, "lastaccess");
+				serializer.startTag(null, "comment");
+				serializer.text(nn(entry.notes));
+				serializer.endTag(null, "comment");
+				
+				serializer.startTag(null, "icon");
+				serializer.text("0");
+				serializer.endTag(null, "icon");
+				
+				serializer.startTag(null, "creation");
+				serializer.text("2014-06-30T09:20:17");
+				serializer.endTag(null, "creation");
+				
+				serializer.startTag(null, "lastaccess");
+				serializer.text("2014-06-30T09:20:23");
+				serializer.endTag(null, "lastaccess");
 
-			serializer.startTag(null, "expire");
-			serializer.text("Never");
-			serializer.endTag(null, "expire");
-			
-			serializer.endTag(null, "entry");
+				serializer.startTag(null, "expire");
+				serializer.text("Never");
+				serializer.endTag(null, "expire");
+				
+				serializer.endTag(null, "entry");				
+			}
 		}
 		
 		serializer.endTag(null,"group");
