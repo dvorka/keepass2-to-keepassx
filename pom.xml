@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" >
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" >         
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mindforger</groupId>
     <artifactId>keepass2-to-keepassx</artifactId>
     <version>1-SNAPSHOT</version>
+    
     <name>Keeepass2ToKeepassX</name>
     <description>KeePass2 to KeePassX password database convertor</description>
+    
     <dependencies>
         <!-- take XPP3 from a Maven repository -->
         <dependency>
@@ -24,6 +26,12 @@
             <systemPath>${basedir}/lib/xpp3-1.1.3.4.K.jar</systemPath>
         </dependency>
         -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>        
     </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>

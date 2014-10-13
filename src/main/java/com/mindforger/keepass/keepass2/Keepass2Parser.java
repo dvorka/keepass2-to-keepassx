@@ -51,6 +51,7 @@ public class Keepass2Parser {
             			break;
             		}                	
             	} while(true);
+            	System.out.println(database.toString());
             	return database;
             }
         } catch (Exception e) {

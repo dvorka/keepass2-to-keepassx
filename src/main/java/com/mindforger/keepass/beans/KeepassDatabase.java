@@ -39,7 +39,7 @@ public class KeepassDatabase {
 	public List<KeepassDatabaseGroup> getSubgroups(KeepassDatabaseGroup group) {
 		List<KeepassDatabaseGroup> result=new ArrayList<KeepassDatabaseGroup>();
 		for(KeepassDatabaseGroup g:groups) {
-			if(g.parent==group.id) {
+			if(g.parent!=null && g.parent.equals(group.id)) {
 				result.add(g);
 			}
 		}
@@ -64,7 +64,9 @@ public class KeepassDatabase {
 		for(KeepassDatabaseGroup group: groups) {
 			sb.append("\n  ");
 			sb.append(group.name);
-			sb.append(" > ");
+			sb.append("(");
+			sb.append(group.id);
+			sb.append(") > ");
 			sb.append(group.parent);
 		}
 		sb.append("\n]");
