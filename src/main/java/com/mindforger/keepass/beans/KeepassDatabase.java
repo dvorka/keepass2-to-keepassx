@@ -69,6 +69,11 @@ public class KeepassDatabase {
 			sb.append(") > ");
 			sb.append(group.parent);
 		}
+		sb.append(",\ngroup stack:");
+		for(KeepassDatabaseGroup group:groupStack) {
+			sb.append("\n  ");
+			sb.append(group.name);
+		}
 		sb.append("\n]");
 		return sb.toString();
 	}

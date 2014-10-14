@@ -13,6 +13,20 @@ import com.mindforger.keepass.beans.KeepassDatabase;
 import com.mindforger.keepass.beans.KeepassDatabaseEntry;
 import com.mindforger.keepass.beans.KeepassDatabaseGroup;
 
+/*
+ * <KeePassFile>
+ *   <Meta>...</>
+ *   <Root>
+ *     <Group>
+ *       ...
+ *       <Entry>...</>*
+ *       <Group>...</>*
+ *     </Group>
+ *     <DeletedObjects>...</>
+ *   <Root>
+ * </KeePassFile>
+ * 
+ */
 public class Keepass2Parser {
 
     public Keepass2Parser() throws Exception {
@@ -47,7 +61,7 @@ public class Keepass2Parser {
             			    }
             			}
             		} else {
-            			// EOD or  DeletedObjects
+            			// EOD or DeletedObjects
             			break;
             		}                	
             	} while(true);
@@ -74,7 +88,7 @@ public class Keepass2Parser {
 			database.groups.add(group);
 			database.groupStack.push(group);			
 			
-			if(fastForwardToEntry(xpp)) {
+			if(fastForwardToEntry(xpp, database)) {
 				KeepassDatabaseEntry entry;
 				do {
 					entry=parseEntry(xpp, group);
@@ -85,7 +99,7 @@ public class Keepass2Parser {
 						break;
 					}
 				} while("Entry".equals(xpp.getName()));			
-			}			
+			}
 		} else {
 			if(!database.groupStack.isEmpty()) {
 				database.groupStack.pop();				
@@ -93,11 +107,17 @@ public class Keepass2Parser {
 		}
 	}
 
-	private boolean fastForwardToEntry(XmlPullParser xpp) throws Exception {
+	private boolean fastForwardToEntry(XmlPullParser xpp, KeepassDatabase database) throws Exception {
 		do {
 			xpp.next();
-			if("Group".equals(xpp.getName()) && xpp.getEventType()==XmlPullParser.END_TAG) {
-				return false;
+			if("Group".equals(xpp.getName())) {
+				if(xpp.getEventType()==XmlPullParser.START_TAG) {
+					parseLevel(xpp, database);
+				} else {
+					if(xpp.getEventType()==XmlPullParser.END_TAG) {
+						return false;
+					}					
+				}
 			}
 		} while(!"Entry".equals(xpp.getName()));
 		return true;

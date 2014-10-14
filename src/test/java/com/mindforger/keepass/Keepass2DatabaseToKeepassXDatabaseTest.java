@@ -3,7 +3,6 @@ package com.mindforger.keepass;
 import java.io.File;
 import java.net.URL;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class Keepass2DatabaseToKeepassXDatabaseTest {
@@ -29,13 +28,11 @@ public class Keepass2DatabaseToKeepassXDatabaseTest {
 		testSkeleton("empty-group");
 	}
 	
-	@Ignore
 	@Test
 	public void testNewDatabase() throws Exception {
 		testSkeleton("new-database");
 	}
 	
-	@Ignore
 	@Test
 	public void testLocator() throws Exception {
 		testSkeleton("locator");
