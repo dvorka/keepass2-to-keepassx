@@ -30,6 +30,6 @@ if "%_JAVACMD%" == "" set _JAVACMD=java.exe
 
 :endcommon
 
-"%_JAVACMD%" -classpath "..\lib\keepass2-to-keepassx.jar:..\lib\xpp3-1.1.4c.jar" com.mindforger.keepass.Keepass2DatabaseToKeepassXDatabase %1 %2
+"%_JAVACMD%" -classpath "..\lib\keepass2-to-keepassx.jar;..\lib\xpp3-1.1.4c.jar" com.mindforger.keepass.Keepass2DatabaseToKeepassXDatabase %1 %2
 
 @REM eof
