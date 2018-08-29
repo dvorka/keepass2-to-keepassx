@@ -36,4 +36,4 @@ And that's it!
 Bugs
 ----
 
-https://github.com/dvorka/keepass2-to-keepassx/issues?state=open
+https://github.com/dvorka/keepass2-to-keepassx/issues
